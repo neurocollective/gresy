@@ -1,3 +1,5 @@
+# TODO -wrap in `text()` before returning?
+
 def get_users_query():
 	return ("SELECT * FROM gresy_user;", None)
 
