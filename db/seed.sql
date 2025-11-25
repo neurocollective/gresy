@@ -49,4 +49,12 @@ INSERT into restaurant VALUES (
 	2,
 	1,
 	NULL
+),(
+	nextval('restaurant_id_seq'),
+	'Elia',
+	'8600 3rd avenue, bay ridge ny 11209',
+	1,
+	2,
+	1,
+	NULL
 );
