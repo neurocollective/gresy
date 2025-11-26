@@ -18,6 +18,23 @@ def get_users():
     all_dict_rows = []
 
     for row in rows:
+        # mapping = row._mapping
+        # print(mapping)
+        # all_dict_rows.append(mapping)
+        all_dict_rows.append({ "email": row[1] })
+
+    return all_dict_rows
+
+@app.route("/inventory/<restaurant_id>/<guests>/<date>/<time>")
+def get_inventory(restaurant_id, guests, date, time):
+    users_query = get_inventory_query(restaurant_id, guests, date, time)
+    query_text = users_query[0]
+    query_params = users_query[1]
+    rows = connection.execute(text(query_text), query_params)
+
+    all_dict_rows = []
+
+    for row in rows:
         all_dict_rows.append({ "email": row[1] })
 
     return all_dict_rows

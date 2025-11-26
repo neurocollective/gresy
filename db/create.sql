@@ -73,7 +73,7 @@ CREATE TABLE seating_inventory (
 
 CREATE TABLE inventory_reservation (
 	id serial PRIMARY KEY,
-	user_id int REFERENCES gresy_user(int) NOT NULL,
+	user_id int REFERENCES gresy_user(id) NOT NULL,
 	seating_inventory_id int REFERENCES seating_inventory(id) NOT NULL,
 	created_date timestamp NOT NULL default now(),
 	modified_date timestamp NOT NULL default now()
