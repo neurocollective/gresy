@@ -65,8 +65,8 @@ CREATE TABLE seating_inventory (
 	restaurant_id int NOT NULL REFERENCES restaurant(id),
 	seat_count int NOT NULL,
 	day date NOT NULL,
-	begin_time timestamp NOT NULL,
-	end_time timestamp NOT NULL,
+	begin_time int NOT NULL,
+	end_time int NOT NULL,
 	created_date timestamp NOT NULL default now(),
 	modified_date timestamp NOT NULL default now()
 );

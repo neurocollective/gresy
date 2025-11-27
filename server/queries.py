@@ -1,12 +1,3 @@
-# TODO -wrap in `text()` before returning?
-
-def get_users_query():
-	return ("SELECT * FROM gresy_user;", None)
-
-def get_restaurants_query(city):
-	query = "SELECT * FROM restaurant r where r.city_id = :city;"
-	return (query, { "city": city})
-
 def get_date_components(date_string):
 	components = date_string.split('-')
 
@@ -15,30 +6,62 @@ def get_date_components(date_string):
 
 	return tuple(components)
 
+def get_users_query():
+	return ("SELECT * FROM gresy_user;", None)
+
+def get_restaurants_query(city):
+	query = "SELECT * FROM restaurant r where r.city_id = :city;"
+	return (query, { "city": city })
+
 # make_date ( year int, month int, day int ) → date
-def get_inventory_query(restaurant_id, guests_count, date, time):
+def get_inventory_query(restaurant_id, guests_count, date, start, end):
+
+	print('args:',restaurant_id, guests_count, date, start, end)
 
 	year, month, day = get_date_components(date)
 
 	query = """
-		SELECT sr.id, ir.id as inventory_id
+		SELECT sr.id, sr.seat_count, sr.begin_time
 		FROM seating_inventory sr
-		JOIN inventory_reservation ir
+		LEFT JOIN inventory_reservation ir
 		ON ir.seating_inventory_id = sr.id
 		WHERE sr.restaurant_id = :restaurant_id
-		AND sr.seat_count > :guests_count
-		AND sr.date = MAKE_DATE(:year, :month, :day)
-		AND time = :time
-		AND inventory_id is NULL;
+		AND sr.seat_count >= :guests_count
+		AND sr.day = MAKE_DATE(:year, :month, :day)
+		AND (sr.begin_time >= :start AND sr.begin_time <= :end)
+		AND ir.id is NULL;
 	"""
 
 	params = {
 		"restaurant_id": restaurant_id,
-		"guests": guests,
+		"guests_count": guests_count,
 		"year": year,
 		"month": month,
 		"day": day,
-		"time": time
+		"start": start,
+		"end": end
+	}
+
+	return (query, params)
+
+def get_reserve_query(payload_dict):
+
+	inventory_id = payload_dict["inventory_id"]
+	user_id = payload_dict.get("user_id", 1)
+
+	query = """
+		INSERT INTO inventory_reservation VALUES (
+			nextval('inventory_reservation_id_seq'),
+			:user_id,
+			:inventory_id,
+			now(),
+			now()
+		)
+	"""
+
+	params = {
+		"inventory_id": inventory_id,
+		"user_id": user_id
 	}
 
 	return (query, params)
