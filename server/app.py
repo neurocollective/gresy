@@ -5,7 +5,7 @@ from queries import *
 
 app = Flask(__name__)
 
-engine = create_engine("postgresql://postgres:postgres@localhost:5432/postgres")
+engine = create_engine("postgresql://postgres:postgres@localhost:5432/postgres", isolation_level="AUTOCOMMIT")
 
 connection = engine.connect()
 
@@ -64,14 +64,41 @@ def reserve_inventory():
     rows = connection.execute(text(query_text), query_params)
 
     print('affected rows:', rows.rowcount)
+    #print('rows[0]:', rows[0])
 
-    return { "message": "reserved successfully" }
+    created_id = -1
+    for row in rows:
+        print(row)
+        #created_id = row[0]
+
+    return { "message": "reserved successfully", "created_id": created_id }
+
+@app.route("/restaurant", methods=['POST'])
+def create_restuarant():
+
+    query_text, query_params = get_create_restaurant_query(request.json)
+
+    print(query_text, query_params)
+
+    rows = connection.execute(text(query_text), query_params)
+
+    print('affected rows:', rows.rowcount)
+    #print('rows[0]:', rows[0])
+
+    created_id = -1
+    for row in rows:
+        print(row)
+        #created_id = row[0]
+
+    return { "message": "restuarant created successfully", "created_id": created_id }
 
 @app.route("/restaurants/<city>")
 def get_restaurants(city):
 
     query_text, query_params = get_restaurants_query(city)
     rows = connection.execute(text(query_text), query_params)
+
+    connection.commit()
 
     all_dict_rows = []
 

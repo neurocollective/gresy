@@ -56,12 +56,40 @@ def get_reserve_query(payload_dict):
 			:inventory_id,
 			now(),
 			now()
-		)
+		) RETURNING id;
 	"""
 
 	params = {
 		"inventory_id": inventory_id,
 		"user_id": user_id
+	}
+
+	return (query, params)
+
+def get_create_restaurant_query(payload_dict):
+
+	name = payload_dict["name"]
+	city_id = payload_dict["city_id"]
+	address = payload_dict["address"]
+
+	query = """
+		INSERT INTO restaurant VALUES (
+			nextval('restaurant_id_seq'),
+			:name,
+			:address,
+			:city_id,
+			NULL,
+			NULL,
+			NULL,
+			now(),
+			now()
+		) RETURNING id;
+	"""
+
+	params = {
+		"name": name,
+		"city_id": city_id,
+		"address": address
 	}
 
 	return (query, params)
