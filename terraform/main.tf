@@ -27,10 +27,10 @@ module "vpc" {
   name = "gresy-vpc"
 
   cidr = "10.0.0.0/16"
-  azs  = slice(data.aws_availability_zones.available.names, 0, 3)
+  azs  = ["use2-az1", "use2-az2"]
 
-  private_subnets = ["10.0.1.0/24"]
-  public_subnets  = ["10.0.4.0/24"]
+  private_subnets = ["10.0.1.0/24", "10.0.2.0/24", "10.0.3.0/24"]
+  public_subnets  = ["10.0.4.0/24", "10.0.5.0/24", "10.0.6.0/24"]
 
   enable_nat_gateway   = false
   single_nat_gateway   = false
@@ -52,7 +52,7 @@ module "eks" {
   cluster_name    = local.cluster_name
   cluster_version = "1.29"
 
-  cluster_endpoint_public_access           = false
+  cluster_endpoint_public_access           = true
   enable_cluster_creator_admin_permissions = true
 
   cluster_addons = {
@@ -158,11 +158,40 @@ resource "aws_db_instance" "gresy" {
   allocated_storage      = 5
   engine                 = "postgres"
   engine_version         = "14.1"
-  username               = "edu"
+  username               = "gresy"
   password               = var.db_password
   db_subnet_group_name   = aws_db_subnet_group.gresy.name
   vpc_security_group_ids = [aws_security_group.rds.id]
   parameter_group_name   = aws_db_parameter_group.gresy.name
-  publicly_accessible    = true
+  publicly_accessible    = false
   skip_final_snapshot    = true
+}
+
+resource "aws_security_group" "allow_ssh" {
+  name_prefix = "allow_ssh"
+
+  ingress {
+    from_port   = 22
+    to_port     = 22
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"] 
+  }
+  egress {
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+}
+
+resource "aws_instance" "test-vm" {
+  ami           = "ami-0f5fcdfbd140e4ab7"
+  instance_type = "t3.micro"
+
+  vpc_security_group_ids = [aws_security_group.allow_ssh.id]
+  key_name = "gresy_keypair"
+}
+
+output "instance_public_ip" {
+  value = aws_instance.test-vm.public_ip
 }
