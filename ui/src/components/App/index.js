@@ -1,15 +1,27 @@
+import React, { useState } from 'react';
 import TopNav from '../TopNav';
+import Main from '../Main';
+import { buildActions, DEFAULT_STATE } from '../../state';
 
 function App() {
+
+  const [state, setState] = useState(DEFAULT_STATE);
+
+  console.log(state);
+
+  const actions = buildActions(state, setState)
+
   return (
     <div className="App">
       <header className="app-header">
         <div class="pre-header"></div>
-        <TopNav />
+        <TopNav state={state} actions={actions} />
       </header>
       <main>
+        <Main state={state} actions={actions} />
       </main>
       <footer>
+        FOOTER
       </footer>
     </div>
   );
