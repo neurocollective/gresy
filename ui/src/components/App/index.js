@@ -9,19 +9,18 @@ function App() {
 
   console.log(state);
 
-  const actions = buildActions(state, setState)
+  const actions = buildActions(state, setState);
 
   return (
     <div className="App">
       <header className="app-header">
-        <div class="pre-header"></div>
+        <div className="pre-header"></div>
         <TopNav state={state} actions={actions} />
       </header>
       <main>
         <Main state={state} actions={actions} />
       </main>
       <footer>
-        FOOTER
       </footer>
     </div>
   );
