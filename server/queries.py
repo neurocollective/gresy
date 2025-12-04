@@ -29,7 +29,8 @@ def get_inventory_query(restaurant_id, guests_count, date, start, end):
 		AND sr.seat_count >= :guests_count
 		AND sr.day = MAKE_DATE(:year, :month, :day)
 		AND (sr.begin_time >= :start AND sr.begin_time <= :end)
-		AND ir.id is NULL;
+		AND ir.id is NULL
+		ORDER BY sr.begin_time ASC;
 	"""
 
 	params = {

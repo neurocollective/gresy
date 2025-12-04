@@ -14,7 +14,7 @@ const displayTime = (beginTime) => {
 	return string.slice(0,1) + ":" + string.slice(1); 
 };
 
-const Inventory = ({ inventory, actions }) => {
+const Inventory = ({ inventory, actions, handleClick }) => {
 
 	const {
 		['inventory_id']: inventoryId,
@@ -22,8 +22,11 @@ const Inventory = ({ inventory, actions }) => {
 		seatCount,
 	} = inventory;
 
+
+	const clicker = () => actions[RESTAURANTS].reserveInventory(inventoryId);
+
 	return (
-		<div className="inventory-wrapper" key={inventoryId}>
+		<div className="inventory-wrapper" key={inventoryId} onClick={clicker} >
 			{displayTime(beginTime)}
 		</div>
 	);

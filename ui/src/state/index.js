@@ -174,6 +174,25 @@ export const buildActions = (state = {}, setState) => {
 		})
 	);
 
+	const reserveInventory = (inventoryId) => {
+		const path = '/inventory';
+		const options = {
+			method: 'POST',
+			body: JSON.stringify({ 'inventory_id': inventoryId }),
+			headers: {
+				'Content-Type': 'application/json',
+			}
+		};
+		return apiCall(path, options).then((res) => {
+
+			console.log(`reserved inventory ${inventoryId}!`);
+
+		}).catch((res) => {
+			const { [RESPONSE_BODY]: error, [HTTP_STATUS]: status } = res;
+			console.error(`getInventoryForRestaurant failed with status ${status}, error: ${error}`);
+		});
+	};
+
 	return {
 		[NAV]: {
 			setGuests,
@@ -189,6 +208,7 @@ export const buildActions = (state = {}, setState) => {
 			setRestaurant,
 			getRestaurants,
 			getInventoryForRestaurant,
+			reserveInventory,
 		},
 	};
 };
