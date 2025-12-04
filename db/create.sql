@@ -41,6 +41,7 @@ CREATE TABLE restaurant (
 	borough_id int REFERENCES borough(id),
 	neighborhood_id int REFERENCES neighborhood(id),
 	secondary_city_id int REFERENCES city(id),
+	image_url text NOT NULL,
 	created_date timestamp NOT NULL default now(),
 	modified_date timestamp NOT NULL default now()
 );

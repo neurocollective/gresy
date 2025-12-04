@@ -111,7 +111,7 @@ def get_restaurants(city):
     all_dict_rows = []
 
     for row in rows:
-        all_dict_rows.append({ "id": row[0], "name": row[1] })
+        all_dict_rows.append({ "id": row[0], "name": row[1], "imageURL": row[2] })
 
     return all_dict_rows
 

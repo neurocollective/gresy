@@ -1,6 +1,6 @@
 import React from "react";
 
-const Logo = () => (
+const GresyLogo = () => (
 	<div className="logo-wrapper">
 		<span className="the-g">G</span>
 		<svg xmlns="http://www.w3.org/2000/svg" width="90" height="40" viewBox="0 0 77 34" fill="#ff462d">
@@ -9,4 +9,4 @@ const Logo = () => (
 	</div>
 );
 
-export default Logo;
+export default GresyLogo;

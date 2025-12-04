@@ -16,3 +16,15 @@ db/recycle:
 	make db/create
 	sleep 2
 	make db/seed
+tf/apply:
+	terraform apply -var db_password=$$RDS_PASSWORD
+image/build:
+	docker build -t gresy ./server
+image/run:
+	docker run -p 5000:5000 --network="host" gresy
+ui/build:
+	npm run build --prefix ./ui
+	cp ./ui/build/static ./server/static
+	cp ./ui/build/index.html ./server/templates
+ui/run:
+	npm run start --prefix ./ui
