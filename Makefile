@@ -26,3 +26,5 @@ ui/build:
 	npm run build --prefix ./ui
 	cp ./ui/build/static ./server/static
 	cp ./ui/build/index.html ./server/templates
+ui/run:
+	npm run start --prefix ./ui

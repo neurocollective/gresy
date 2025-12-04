@@ -1,4 +1,5 @@
 import React from 'react';
+import { SEARCH_RESULTS, SHOW_RESTAURANT_SEARCH, NAV, RESTAURANTS } from '../../state';
 
 const SearchResult = ({ result = {}, onClick }) => {
 	return (
@@ -30,12 +31,14 @@ const SearchInput = ({ state, actions }) => {
 	} = actions;
 
 	const {
-		nav: {
+		[NAV]: {
 			searchText,
+			[SHOW_RESTAURANT_SEARCH]: showRestaurantSearch,
 		},
+		[RESTAURANTS]: {
+			[SEARCH_RESULTS]: searchResults,
+		}
 	} = state;
-
-	const searchResults = [{ name: 'Tanoreen', id: 1, imageUrl }];
 
 	const onType = (e) => {
 		const { target: { value }} = e;
@@ -44,6 +47,10 @@ const SearchInput = ({ state, actions }) => {
 	};
 
 	const onClick = id => setRestaurant(id);
+
+	const visibilityStyle = {
+		visibility: (showRestaurantSearch) ? 'visible' : 'hidden',
+	};
 
 	return (
 		<div style={{ width: '100%' }}>
@@ -55,7 +62,7 @@ const SearchInput = ({ state, actions }) => {
 				onBlur={handleInputBlur}
 				onChange={onType}
 			/>
-			<div className="search-dropdown-wrapper">
+			<div className="search-dropdown-wrapper" style={visibilityStyle} >
 				{searchResults.map(result => (
 					<SearchResult result={result} onClick={onClick} />
 				))}

@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import TopNav from '../TopNav';
 import Main from '../Main';
-import { buildActions, DEFAULT_STATE } from '../../state';
+import { buildActions, DEFAULT_STATE, RESTAURANTS } from '../../state';
 
 function App() {
 
@@ -10,6 +10,10 @@ function App() {
   console.log(state);
 
   const actions = buildActions(state, setState);
+
+  useEffect(() => {
+    actions[RESTAURANTS].getRestaurants();
+  }, []);
 
   return (
     <div className="App">
