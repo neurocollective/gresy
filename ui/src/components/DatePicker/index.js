@@ -23,8 +23,6 @@ const DatePicker = ({ state, actions }) => {
 		return actions.nav.setDate(value);
 	};
 
-	console.log('date in DatePicker', date);
-
 	return (
 		<div className="date-choice-wrapper">
 			<select style={style} className="date-picker-dropdown nav-text" onChange={chooseDate} value={date} >

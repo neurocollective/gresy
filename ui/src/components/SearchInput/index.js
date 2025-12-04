@@ -1,18 +1,23 @@
 import React from 'react';
 import { SEARCH_RESULTS, SHOW_RESTAURANT_SEARCH, NAV, RESTAURANTS } from '../../state';
 
-const SearchResult = ({ result = {}, onClick }) => {
+const SearchResult = ({ result = {}, handleClick }) => {
+
+	const localClickHandler = () => handleClick(result.id);
+
 	return (
-		<div className="search-result-wrapper" onClick={() => onClick(result.id)} role="button">
+		<div className="search-result-wrapper" onClick={localClickHandler}>
 			<img className="search-result-image" src={result.imageURL} />
-			<span>{result.name}</span>
+			&nbsp;
+			&nbsp;
+			<span className="search-result-text">{result.name}</span>
 		</div>
 	);
 };
 
 const NoResults = () => {
 	return (
-		<div style={{ color: 'black' }}>{'No Results'}</div>
+		<div className="search-result-text" style={{ color: 'black' }}>{'No Results'}</div>
 	);
 };
 
@@ -44,7 +49,10 @@ const SearchInput = ({ state, actions }) => {
 		handleNavTyping(value);
 	};
 
-	const onClick = id => setRestaurant(id);
+	const onClick = id => {
+		console.log('id:', id);
+		setRestaurant(id);
+	};
 
 	const visibilityStyle = {
 		visibility: (showRestaurantSearch) ? 'visible' : 'hidden',
@@ -56,13 +64,14 @@ const SearchInput = ({ state, actions }) => {
 				value={searchText}
 				type="text"
 				className="nav-search-input"
-				onFocus={handleInputFocus}
-				onBlur={handleInputBlur}
+				// onFocus={handleInputFocus}
+				// onBlur={handleInputBlur}
 				onChange={onType}
+				placeholder="Search restaurants, cuisine, etc."
 			/>
 			<div className="search-dropdown-wrapper" style={visibilityStyle} >
 				{searchResults.map(result => (
-					<SearchResult result={result} onClick={onClick} />
+					<SearchResult result={result} handleClick={onClick} />
 				))}
 				<hr style={{ color: '#eaeaea' }} />
 				{!searchResults.length ? <NoResults /> : ''}

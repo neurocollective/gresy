@@ -7,13 +7,16 @@ function App() {
 
   const [state, setState] = useState(DEFAULT_STATE);
 
-  console.log(state);
+  //console.log(state);
 
   const actions = buildActions(state, setState);
 
   useEffect(() => {
+    console.log('fetching restaurants...');
     actions[RESTAURANTS].getRestaurants();
   }, []);
+
+  console.log('state:', state);
 
   return (
     <div className="App">

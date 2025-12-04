@@ -5,6 +5,7 @@ import * as state from '../../state';
 
 const {
 	RESTAURANTS,
+	SELECTED_RESTAURANT,
 } = state;
 
 const Filler = () => {
@@ -15,15 +16,21 @@ const Filler = () => {
 	);
 };
 
-const Main = (state, actions) => {
+const Main = ({ state, actions }) => {
+
+	// console.log('state:', state);
+	// console.log('state.restaurants:', state.restaurants);
 
 	const {
 		[RESTAURANTS]: {
-			selectedRestaurant,
-		} = {},
+			[SELECTED_RESTAURANT]: selectedRestaurant,
+		},
 	} = state;
 
 	const restaurantSelected = Boolean(selectedRestaurant);
+	// console.log('restaurantSelected', restaurantSelected);
+	// console.log('selectedRestaurant', state?.[RESTAURANTS]?.[SELECTED_RESTAURANT]);
+	// console.log('constants:', SELECTED_RESTAURANT, RESTAURANTS);
 
 	return (
 		<Fragment>

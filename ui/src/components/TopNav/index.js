@@ -18,7 +18,7 @@ const TopNav = ({ state, actions }) => {
 		},
 		restaurants: {
 			selectedRestaurant,
-		}
+		},
 	} = state;
 
 	const isAllDay = time === '*';

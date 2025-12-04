@@ -61,11 +61,11 @@ INSERT into restaurant VALUES (
 	'https://image.resy.com/3/003/1/2358/9ba4d98e45460a711bbdb5bb809edb0d622e20ea/jpg/1:1/800'
 );
 
--- 12-2-2025, tanoreen
+-- 12-2-2025, elia
 
 INSERT INTO seating_inventory VALUES (
 	nextval('seating_inventory_id_seq'),
-	1,
+	2,
 	4,
 	MAKE_DATE(2025,12,2),
 	1700, 
@@ -74,7 +74,7 @@ INSERT INTO seating_inventory VALUES (
 	now()
 ),(
 	nextval('seating_inventory_id_seq'),
-	1,
+	2,
 	4,
 	MAKE_DATE(2025,12,2),
 	1715, -- 5 to 6
@@ -83,7 +83,7 @@ INSERT INTO seating_inventory VALUES (
 	now()
 ),(
 	nextval('seating_inventory_id_seq'),
-	1,
+	2,
 	4,
 	MAKE_DATE(2025,12,2),
 	1730, -- 5 to 6
@@ -92,7 +92,7 @@ INSERT INTO seating_inventory VALUES (
 	now()
 ),(
 	nextval('seating_inventory_id_seq'),
-	1,
+	2,
 	4,
 	MAKE_DATE(2025,12,2),
 	1745, -- 5 to 6
@@ -103,7 +103,7 @@ INSERT INTO seating_inventory VALUES (
 
 INSERT INTO seating_inventory VALUES  (
 	nextval('seating_inventory_id_seq'),
-	1,
+	2,
 	4,
 	MAKE_DATE(2025,12,2),
 	1800, -- 6 to 7
@@ -112,7 +112,7 @@ INSERT INTO seating_inventory VALUES  (
 	now()
 ),(
 	nextval('seating_inventory_id_seq'),
-	1,
+	2,
 	4,
 	MAKE_DATE(2025,12,2),
 	1815, -- 6 to 7
@@ -121,7 +121,7 @@ INSERT INTO seating_inventory VALUES  (
 	now()
 ),(
 	nextval('seating_inventory_id_seq'),
-	1,
+	2,
 	4,
 	MAKE_DATE(2025,12,2),
 	1830, -- 6 to 7
@@ -130,7 +130,7 @@ INSERT INTO seating_inventory VALUES  (
 	now()
 ),(
 	nextval('seating_inventory_id_seq'),
-	1,
+	2,
 	4,
 	MAKE_DATE(2025,12,2),
 	1845, -- 6 to 7
@@ -141,7 +141,7 @@ INSERT INTO seating_inventory VALUES  (
 
 INSERT INTO seating_inventory VALUES (
 	nextval('seating_inventory_id_seq'),
-	1,
+	2,
 	4,
 	MAKE_DATE(2025,12,2),
 	1900, -- 7 to 8
@@ -150,7 +150,7 @@ INSERT INTO seating_inventory VALUES (
 	now()
 ),(
 	nextval('seating_inventory_id_seq'),
-	1,
+	2,
 	4,
 	MAKE_DATE(2025,12,2),
 	1915, -- 7 to 8
@@ -159,7 +159,7 @@ INSERT INTO seating_inventory VALUES (
 	now()
 ),(
 	nextval('seating_inventory_id_seq'),
-	1,
+	2,
 	4,
 	MAKE_DATE(2025,12,2),
 	1930, -- 7 to 8
@@ -168,9 +168,241 @@ INSERT INTO seating_inventory VALUES (
 	now()
 ),(
 	nextval('seating_inventory_id_seq'),
-	1,
+	2,
 	4,
 	MAKE_DATE(2025,12,2),
+	1945, -- 7 to 8
+	2045,
+	now(),
+	now()
+);
+
+-- 12-3-2025, elia
+
+INSERT INTO seating_inventory VALUES (
+	nextval('seating_inventory_id_seq'),
+	2,
+	4,
+	MAKE_DATE(2025,12,3),
+	1700, 
+	1800,
+	now(),
+	now()
+),(
+	nextval('seating_inventory_id_seq'),
+	2,
+	4,
+	MAKE_DATE(2025,12,3),
+	1715, -- 5 to 6
+	1815,
+	now(),
+	now()
+),(
+	nextval('seating_inventory_id_seq'),
+	2,
+	4,
+	MAKE_DATE(2025,12,3),
+	1730, -- 5 to 6
+	1830,
+	now(),
+	now()
+),(
+	nextval('seating_inventory_id_seq'),
+	2,
+	4,
+	MAKE_DATE(2025,12,3),
+	1745, -- 5 to 6
+	1845,
+	now(),
+	now()
+);
+
+INSERT INTO seating_inventory VALUES  (
+	nextval('seating_inventory_id_seq'),
+	2,
+	4,
+	MAKE_DATE(2025,12,3),
+	1800, -- 6 to 7
+	1900,
+	now(),
+	now()
+),(
+	nextval('seating_inventory_id_seq'),
+	2,
+	4,
+	MAKE_DATE(2025,12,3),
+	1815, -- 6 to 7
+	1915,
+	now(),
+	now()
+),(
+	nextval('seating_inventory_id_seq'),
+	2,
+	4,
+	MAKE_DATE(2025,12,3),
+	1830, -- 6 to 7
+	1930,
+	now(),
+	now()
+),(
+	nextval('seating_inventory_id_seq'),
+	2,
+	4,
+	MAKE_DATE(2025,12,3),
+	1845, -- 6 to 7
+	1945,
+	now(),
+	now()
+);
+
+INSERT INTO seating_inventory VALUES (
+	nextval('seating_inventory_id_seq'),
+	2,
+	4,
+	MAKE_DATE(2025,12,3),
+	1900, -- 7 to 8
+	2000,
+	now(),
+	now()
+),(
+	nextval('seating_inventory_id_seq'),
+	2,
+	4,
+	MAKE_DATE(2025,12,3),
+	1915, -- 7 to 8
+	2015,
+	now(),
+	now()
+),(
+	nextval('seating_inventory_id_seq'),
+	2,
+	4,
+	MAKE_DATE(2025,12,3),
+	1930, -- 7 to 8
+	2030,
+	now(),
+	now()
+),(
+	nextval('seating_inventory_id_seq'),
+	2,
+	4,
+	MAKE_DATE(2025,12,3),
+	1945, -- 7 to 8
+	2045,
+	now(),
+	now()
+);
+
+-- 2025-12-5 tanoreen
+
+INSERT INTO seating_inventory VALUES (
+	nextval('seating_inventory_id_seq'),
+	1,
+	4,
+	MAKE_DATE(2025,12,5),
+	1700, 
+	1800,
+	now(),
+	now()
+),(
+	nextval('seating_inventory_id_seq'),
+	1,
+	4,
+	MAKE_DATE(2025,12,5),
+	1715, -- 5 to 6
+	1815,
+	now(),
+	now()
+),(
+	nextval('seating_inventory_id_seq'),
+	1,
+	4,
+	MAKE_DATE(2025,12,5),
+	1730, -- 5 to 6
+	1830,
+	now(),
+	now()
+),(
+	nextval('seating_inventory_id_seq'),
+	1,
+	4,
+	MAKE_DATE(2025,12,5),
+	1745, -- 5 to 6
+	1845,
+	now(),
+	now()
+);
+
+INSERT INTO seating_inventory VALUES  (
+	nextval('seating_inventory_id_seq'),
+	1,
+	4,
+	MAKE_DATE(2025,12,5),
+	1800, -- 6 to 7
+	1900,
+	now(),
+	now()
+),(
+	nextval('seating_inventory_id_seq'),
+	1,
+	4,
+	MAKE_DATE(2025,12,5),
+	1815, -- 6 to 7
+	1915,
+	now(),
+	now()
+),(
+	nextval('seating_inventory_id_seq'),
+	1,
+	4,
+	MAKE_DATE(2025,12,5),
+	1830, -- 6 to 7
+	1930,
+	now(),
+	now()
+),(
+	nextval('seating_inventory_id_seq'),
+	1,
+	4,
+	MAKE_DATE(2025,12,5),
+	1845, -- 6 to 7
+	1945,
+	now(),
+	now()
+);
+
+INSERT INTO seating_inventory VALUES (
+	nextval('seating_inventory_id_seq'),
+	1,
+	4,
+	MAKE_DATE(2025,12,5),
+	1900, -- 7 to 8
+	2000,
+	now(),
+	now()
+),(
+	nextval('seating_inventory_id_seq'),
+	1,
+	4,
+	MAKE_DATE(2025,12,5),
+	1915, -- 7 to 8
+	2015,
+	now(),
+	now()
+),(
+	nextval('seating_inventory_id_seq'),
+	1,
+	4,
+	MAKE_DATE(2025,12,5),
+	1930, -- 7 to 8
+	2030,
+	now(),
+	now()
+),(
+	nextval('seating_inventory_id_seq'),
+	1,
+	4,
+	MAKE_DATE(2025,12,5),
 	1945, -- 7 to 8
 	2045,
 	now(),
@@ -183,7 +415,7 @@ INSERT INTO seating_inventory VALUES (
 	nextval('seating_inventory_id_seq'),
 	1,
 	4,
-	MAKE_DATE(2025,12,3),
+	MAKE_DATE(2025,12,6),
 	1700, 
 	1800,
 	now(),
@@ -192,7 +424,7 @@ INSERT INTO seating_inventory VALUES (
 	nextval('seating_inventory_id_seq'),
 	1,
 	4,
-	MAKE_DATE(2025,12,3),
+	MAKE_DATE(2025,12,6),
 	1715, -- 5 to 6
 	1815,
 	now(),
@@ -201,7 +433,7 @@ INSERT INTO seating_inventory VALUES (
 	nextval('seating_inventory_id_seq'),
 	1,
 	4,
-	MAKE_DATE(2025,12,3),
+	MAKE_DATE(2025,12,6),
 	1730, -- 5 to 6
 	1830,
 	now(),
@@ -210,7 +442,7 @@ INSERT INTO seating_inventory VALUES (
 	nextval('seating_inventory_id_seq'),
 	1,
 	4,
-	MAKE_DATE(2025,12,3),
+	MAKE_DATE(2025,12,6),
 	1745, -- 5 to 6
 	1845,
 	now(),
@@ -221,7 +453,7 @@ INSERT INTO seating_inventory VALUES  (
 	nextval('seating_inventory_id_seq'),
 	1,
 	4,
-	MAKE_DATE(2025,12,3),
+	MAKE_DATE(2025,12,6),
 	1800, -- 6 to 7
 	1900,
 	now(),
@@ -230,7 +462,7 @@ INSERT INTO seating_inventory VALUES  (
 	nextval('seating_inventory_id_seq'),
 	1,
 	4,
-	MAKE_DATE(2025,12,3),
+	MAKE_DATE(2025,12,6),
 	1815, -- 6 to 7
 	1915,
 	now(),
@@ -239,7 +471,7 @@ INSERT INTO seating_inventory VALUES  (
 	nextval('seating_inventory_id_seq'),
 	1,
 	4,
-	MAKE_DATE(2025,12,3),
+	MAKE_DATE(2025,12,6),
 	1830, -- 6 to 7
 	1930,
 	now(),
@@ -248,7 +480,7 @@ INSERT INTO seating_inventory VALUES  (
 	nextval('seating_inventory_id_seq'),
 	1,
 	4,
-	MAKE_DATE(2025,12,3),
+	MAKE_DATE(2025,12,6),
 	1845, -- 6 to 7
 	1945,
 	now(),
@@ -259,7 +491,7 @@ INSERT INTO seating_inventory VALUES (
 	nextval('seating_inventory_id_seq'),
 	1,
 	4,
-	MAKE_DATE(2025,12,3),
+	MAKE_DATE(2025,12,6),
 	1900, -- 7 to 8
 	2000,
 	now(),
@@ -268,7 +500,7 @@ INSERT INTO seating_inventory VALUES (
 	nextval('seating_inventory_id_seq'),
 	1,
 	4,
-	MAKE_DATE(2025,12,3),
+	MAKE_DATE(2025,12,6),
 	1915, -- 7 to 8
 	2015,
 	now(),
@@ -277,7 +509,7 @@ INSERT INTO seating_inventory VALUES (
 	nextval('seating_inventory_id_seq'),
 	1,
 	4,
-	MAKE_DATE(2025,12,3),
+	MAKE_DATE(2025,12,6),
 	1930, -- 7 to 8
 	2030,
 	now(),
@@ -286,9 +518,10 @@ INSERT INTO seating_inventory VALUES (
 	nextval('seating_inventory_id_seq'),
 	1,
 	4,
-	MAKE_DATE(2025,12,3),
+	MAKE_DATE(2025,12,6),
 	1945, -- 7 to 8
 	2045,
 	now(),
 	now()
 );
+

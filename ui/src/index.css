@@ -1,8 +1,6 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: Beatrice,GT America,Helvetica,Verdana,sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -89,7 +87,7 @@ code {
   z-index: 10;
   color: white;
   position: relative;
-  bottom: -6px;
+  bottom: -3px;
   left: 13px;
   font-size: 22px;
   font-weight: bold;
@@ -150,8 +148,69 @@ code {
   display: flex;
   justify-content: flex-start;
   align-items: center;
+  cursor: pointer;
+  z-index: 200;
 }
 
 .search-result-image {
   width: 60px;
+}
+
+.search-result-text {
+  font-size: 18px;
+
+}
+
+.detail-page-wrapper {
+  display: flex;
+  max-width: 80%;
+}
+
+.detail-column {
+  padding: 50px;
+}
+
+.detail-column-one {
+  max-width: 45%;
+}
+
+.detail-column-one {
+}
+
+.detail-image {
+  max-width: 475px;
+  border-radius: 14px;
+}
+
+.detail-nav-wrapper {
+  padding: 8px;
+  border: 1px solid #eaeaea;
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.inventory-list-wrapper {
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.inventory-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #336dde;
+  color: #fff;
+  padding: 10px;
+  min-width: 180px;
+  ming-height: 40px;
+  margin-bottom: 8px;
+  border-radius:  10px;
+  cursor: pointer;
+}
+
+.inventory-wrapper:hover {
+  background-color: #4829B3
 }

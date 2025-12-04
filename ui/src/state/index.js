@@ -13,11 +13,12 @@ export const SEARCH_RESULTS = 'searchResults';
 export const ALL_RESTAURANTS = 'allRestaurants';
 export const CITY = 'city';
 export const SELECTED_CITY_ID = 'selectedCityId';
+export const DISPLAY_INVENTORY = 'displayInventory';
 
 const noop = () => {};
 const normalize = token => token.toLowerCase().replaceAll(' ', '');
 
-export const buildActions = (state = {}, setState = noop) => {
+export const buildActions = (state = {}, setState) => {
 
 	const setGuests = count => setState(oldState => ({
 		...oldState,
@@ -27,13 +28,29 @@ export const buildActions = (state = {}, setState = noop) => {
 		},
 	}));
 
-	const setDate = date => setState(oldState => ({
-		...oldState,
-		[NAV]: {
-			...oldState[NAV],
-			[DATE]: date,
-		},
-	}));
+	const setDate = date => setState(oldState => {
+
+		const {
+			[NAV]: {
+				[GUEST_COUNT]: guestCount,
+			},
+			[RESTAURANTS]: {
+				[SELECTED_RESTAURANT]: restaurantId
+			}
+		} = state;
+
+		if (Boolean(restaurantId)) {
+			getInventoryForRestaurant(restaurantId, guestCount, date);
+		}
+
+		return {
+			...oldState,
+			[NAV]: {
+				...oldState[NAV],
+				[DATE]: date,
+			},
+		};
+	});
 
 	const setTime = time => setState(oldState => ({
 		...oldState,
@@ -102,13 +119,16 @@ export const buildActions = (state = {}, setState = noop) => {
 		};
 	});
 
-	const setRestaurant = id => setState(oldState => ({
-		...oldState,
-		[RESTAURANTS]: {
-			...oldState[RESTAURANTS],
-			[SELECTED_RESTAURANT]: id,
-		},
-	}));
+	const setRestaurant = id => {
+		const {
+			[NAV]: {
+				[GUEST_COUNT]: guestCount,
+				[DATE]: date,
+			}
+		} = state;
+
+		return getInventoryForRestaurant(id, guestCount, date);
+	};
 
 	// async
 	const getRestaurants = (cityId = 1) => (
@@ -129,6 +149,31 @@ export const buildActions = (state = {}, setState = noop) => {
 		})
 	);
 
+	// "/inventory/<restaurant_id>/<guests>/<date>/<time>"
+	const getInventoryForRestaurant = (restaurantId, guestCount, date) => (
+		apiCall(`/inventory/${restaurantId}/${guestCount}/${date}/*`).then((res) => {
+
+			console.log(`got inventory for restaurant ${restaurantId}!`);
+
+			return setState(oldState => ({
+				...oldState,
+				[RESTAURANTS]: {
+					...oldState[RESTAURANTS],
+					[DISPLAY_INVENTORY]: res[RESPONSE_BODY],
+					[SELECTED_RESTAURANT]: restaurantId,
+				},
+				[NAV]: {
+					...oldState[NAV],
+					[SHOW_RESTAURANT_SEARCH]: false,
+				},
+			}));
+
+		}).catch((res) => {
+			const { [RESPONSE_BODY]: error, [HTTP_STATUS]: status } = res;
+			console.error(`getInventoryForRestaurant failed with status ${status}, error: ${error}`);
+		})
+	);
+
 	return {
 		[NAV]: {
 			setGuests,
@@ -143,6 +188,7 @@ export const buildActions = (state = {}, setState = noop) => {
 		[RESTAURANTS]: {
 			setRestaurant,
 			getRestaurants,
+			getInventoryForRestaurant,
 		},
 	};
 };
@@ -159,6 +205,7 @@ export const DEFAULT_STATE = {
 		[SELECTED_RESTAURANT]: 0,
 		[SEARCH_RESULTS]: [],
 		[ALL_RESTAURANTS]: [],
+		[DISPLAY_INVENTORY]: [],
 	},
 	[CITY]: {
 		[SELECTED_CITY_ID]: 1,
