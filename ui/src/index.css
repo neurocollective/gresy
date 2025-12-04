@@ -143,3 +143,15 @@ code {
   border: 0px;
   color: #eb1700;
 }
+
+.search-result-wrapper {
+  padding: 5px;
+  min-height: 30px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.search-result-image {
+  width: 60px;
+}

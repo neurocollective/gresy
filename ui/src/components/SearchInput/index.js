@@ -3,14 +3,12 @@ import { SEARCH_RESULTS, SHOW_RESTAURANT_SEARCH, NAV, RESTAURANTS } from '../../
 
 const SearchResult = ({ result = {}, onClick }) => {
 	return (
-		<div onClick={() => onClick(result.id)} role="button">
-			<img style={{ width: '30px' }} src={result.imageUrl} />
+		<div className="search-result-wrapper" onClick={() => onClick(result.id)} role="button">
+			<img className="search-result-image" src={result.imageURL} />
 			<span>{result.name}</span>
 		</div>
 	);
 };
-
-const imageUrl = 'https://image.resy.com/3/003/1/6599/f5911a01f7d5337271d2f6a37d1d06151a924b50/jpg/1:1/800';
 
 const NoResults = () => {
 	return (

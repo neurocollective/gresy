@@ -48,7 +48,8 @@ INSERT into restaurant VALUES (
 	1,
 	2,
 	1,
-	NULL
+	NULL,
+	'https://image.resy.com/3/003/1/6599/f5911a01f7d5337271d2f6a37d1d06151a924b50/jpg/1:1/800'
 ),(
 	nextval('restaurant_id_seq'),
 	'Elia',
@@ -56,7 +57,8 @@ INSERT into restaurant VALUES (
 	1,
 	2,
 	1,
-	NULL
+	NULL,
+	'https://image.resy.com/3/003/1/2358/9ba4d98e45460a711bbdb5bb809edb0d622e20ea/jpg/1:1/800'
 );
 
 -- 12-2-2025, tanoreen

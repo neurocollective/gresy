@@ -10,7 +10,7 @@ def get_users_query():
 	return ("SELECT * FROM gresy_user;", None)
 
 def get_restaurants_query(city):
-	query = "SELECT * FROM restaurant r where r.city_id = :city;"
+	query = "SELECT id, name, image_url FROM restaurant r where r.city_id = :city;"
 	return (query, { "city": city })
 
 # make_date ( year int, month int, day int ) → date
