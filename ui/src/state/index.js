@@ -185,7 +185,18 @@ export const buildActions = (state = {}, setState) => {
 		};
 		return apiCall(path, options).then((res) => {
 
+			const {
+				[NAV]: {
+					[GUEST_COUNT]: guests,
+					[DATE]: date
+				},
+				[RESTAURANTS]: {
+					[SELECTED_RESTAURANT]: restaurantId,
+				},
+			} = state;
+
 			console.log(`reserved inventory ${inventoryId}!`);
+			return getInventoryForRestaurant(restaurantId, guests, date);
 
 		}).catch((res) => {
 			const { [RESPONSE_BODY]: error, [HTTP_STATUS]: status } = res;

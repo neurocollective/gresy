@@ -22,9 +22,13 @@ image/build:
 	docker build -t gresy ./server
 image/run:
 	docker run -p 5000:5000 --network="host" gresy
-ui/build:
+react/build:
 	npm run build --prefix ./ui
-	cp ./ui/build/static ./server/static
-	cp ./ui/build/index.html ./server/templates
-ui/run:
+	cp -r ./ui/build/static ./server/
+	cp -r ./ui/build/index.html ./server/templates
+react/sync:
+	cp -r ./ui/build/static ./server/
+	cp -r ./ui/build/index.html ./server/templates
+	cp ./ui/public/glenn_hinks.jpg ./server/static
+react/run:
 	npm run start --prefix ./ui
