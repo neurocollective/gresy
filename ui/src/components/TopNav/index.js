@@ -70,7 +70,7 @@ const TopNav = ({ state, actions }) => {
 				<div className="nav-component nav-component-space"></div>
 				<div className="nav-component">
 					<div className="profile-image-wrapper">
-						<img className="profile-image" src="glenn_hinks.jpg" />
+						<img className="profile-image" src="static/glenn_hinks.jpg" />
 					</div>
 				</div>
 			</nav>
