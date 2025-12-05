@@ -181,7 +181,7 @@ export const buildActions = (state = {}, setState) => {
 			body: JSON.stringify({ 'inventory_id': inventoryId }),
 			headers: {
 				'Content-Type': 'application/json',
-			}
+			},
 		};
 		return apiCall(path, options).then((res) => {
 
